@@ -1,1 +1,72 @@
 
+// FONT SIZE
+// FONT SIZE FOR SCREEN AND MOBILE TO 2000px WIDTH 
+$font-size-base: 62.5%;
+$font-size-main: clamp(1.6rem, 1rem + .5vw, 3rem);
+$font-size-small: clamp(1.6rem, 1rem + .5vh, 2rem);
+$font-size-medium: clamp(1.75rem, 1rem + 1.1vh, 2.25rem);
+$font-size-big: clamp(2.5rem, 1rem + 2vh, 3.5rem);
+
+// FONT SIZE FOR SCREEN AND MOBILE MORE THAN 2000px WIDTH 
+
+$xl-font-size-medium: clamp(2.25rem, 1rem + 1.5vh, 3rem);
+$xl-font-size-xl: clamp(3.5rem, 1rem + 2.5vh, 6rem);
+
+// FONT STYLE 
+
+$font-size: 62.5%;
+$font-size-base: 1.6rem;
+$font-family: "Josefin Sans", "Montserrat", sans-serif;
+$font-weight-base: 400;
+$font-weight-bold: 700;
+
+$letter-spacing: 1px;
+$line-height: 1.6;
+
+//COLORS CI VARIABLES
+$color-primary: #F9F9F9;
+$color-secondary: #B2C5CD;
+$color-complementary: #6D3527;
+
+// COLORS MAP
+$colors: (
+    "primary": #F9F9F9,
+    "secondary": #B2C5CD,
+    "complementary": #6D3527,
+);
+
+// GENERATE COLORS CLASSES
+@each $color, $val in $colors {
+    //create names for background colors
+    .bgc-#{$color} {
+        background-color: $val;
+    }
+    //create names for text colors
+        .txt-#{$color} {
+            color: $val;
+        }
+    // create inverted, darken, lighten colors for dark mode
+    .bg-#{$color}-inverted{
+        background-color: invert($val);
+    }
+
+    @for $i from 1 through 1 {
+        .bg-#{$color}-darken {
+            background-color: darken($val, $i * 10);
+        }
+
+        .bg-#{$color}-lighten {
+            background-color: lighten($val, $i * 10);
+        }
+    }
+}
+
+// Z-INDEX VARIABLES 
+$z-index: (
+    "minus-xl": -1000,
+    "minus-large": -100,
+    "minus-small": -10,
+    "small": 10,
+    "large": 100,
+    "xl": 1000,
+);

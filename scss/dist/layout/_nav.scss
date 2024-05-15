@@ -1,1 +1,78 @@
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
 
+.nav{
+    display: flex;
+    @include m.flex-center(space-between, center);
+    width: 100%;
+    z-index: 100;
+    padding: 10px;
+    border: 1px solid rgba(178, 197, 205, 0.3);
+    /* From https://css.glass */
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.325);
+    @media screen and (min-width: 1200px) {
+        background: none;
+    }
+
+    &__list{
+        @media screen and (min-width: 1200px){
+            width: 800px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 1rem;
+            margin: 0 auto;
+        }
+    }
+
+    &__item:not(.nav__item--logo){
+        display: none;
+        @media screen and (min-width: 1200px){
+            display: block;
+        }
+    }
+
+    &__logo{
+        height: 70px;
+    }
+    
+    &__link{
+        color: v.$color-complementary;
+        @media screen and (min-width: 1200px) {
+            color: v.$color-secondary;
+            font-size: 2rem;
+            transition: all .3s;
+            &:hover{
+                color: v.$color-primary;
+            }
+        }
+    }
+}
+
+
+.hamburger-btn{
+    @include m.flex(flex, column);
+    @include m.flex-center(space-around, end);
+    @media screen and (min-width: 1200px) {
+        display: none;
+    }
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+
+    &__item{
+        height: 3px;
+        width: 100%;
+        background-color: v.$color-primary;
+        border-radius: 10px;
+        &:nth-child(2n){
+            width: 80%;
+        }
+        &:nth-child(3n){
+            width: 60%;
+        }
+    }
+}

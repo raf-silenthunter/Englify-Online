@@ -20,14 +20,66 @@
     <meta property="og:site_name" content="Nazwa Twojej Strony" />
     <meta property="og:locale" content="pl_PL" />
     <!-- UZUPEŁNIĆ POWYŻSZE!!! -->
-
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/3cdfb2a1d6.js" crossorigin="anonymous"></script>
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 <body>
-    
+    <main>
+        <header class="header">
+            <div class="header__background">
+            </div>
+            <nav class="header__nav nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#offert" class="nav__link">Oferta</a></li>
+                    <li class="nav__item"><a href="#pricing" class="nav__link">Cennik</a></li>
+                    <li class="nav__item nav__item--logo"><a href="#" class="nav__link">
+                        <img src="../images/logos/Englify-logo-browm.png"
+                                alt="logo firmy Englify Online" class="nav__logo"></a></li>
+                    <li class="nav__item"><a href="#testimonials" class="nav__link">Opinie</a></li>
+                    <li class="nav__item"><a href="#contact-me" class="nav__link">Kontakt</a></li>
+                </ul>
+                <button class="nav__hamburger-btn hamburger-btn">
+                    <span class="hamburger-btn__item"></span>
+                    <span class="hamburger-btn__item"></span>
+                    <span class="hamburger-btn__item"></span>
+                </button>
+            </nav>
+            <div class="header__content">
+                <div class="header__intro-block">
+                    <p class="header__txt txt-primary">Witaj w Englify Online!</p>
+                    <h1 class="header__title txt-secondary">Zajęcia z języka angielskiego szyte na miarę! Angielski dla dzieci i dorosłych.
+                    </h1>
+                    <p class="header__txt txt-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, ipsa?</p>
+                    <button class="header__button contact-btn">Umów się na rozmowę</button>
+                </div>
+                <div class="header__more-block">
+                    <p class="header__more header__txt--small txt-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Eum, vel?</p>
+                    <button class="header__more-btn">
+                        <img src="../icons/arrow-down-32-blue.png" alt="ikona strzałka w dół">
+                    </button>
+                </div>
+                
+            </div>
+        </header>
+        <section class="offert" id="offert"></section>
+        <section class="steps" id=""></section>
+        <section class="pricing" id="pricing"></section>
+        <section class="testimonials" id="testimonials"></section>
+        <section class="contact-me" id="contact-me"></section>
+    </main>
+    <footer>
 
-    
+    </footer>
     <script src="../js/main.js" type="module"></script>
     <!-- <script nomodule src=""></script> -->
 </body>

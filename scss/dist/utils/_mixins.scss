@@ -1,1 +1,41 @@
+@use "../utils/variables" as v;
+@use "../utils/breakpoints" as b;
 
+
+@mixin flex ($display, $direction: "row") {
+    display: $display;
+    flex-direction: $direction;
+}
+
+@mixin flex-center ($justify-content, $align-items) {
+    justify-content: $justify-content;
+    align-items: $align-items;
+    // align-content: $align-content;
+}
+
+@mixin position ($position, $top, $left) {
+    position: $position;
+    top: $top;
+    left: $left;
+}
+
+@mixin border-properties ($width, $style, $color, $radius: 0px) {
+    border: $width $style $color;
+    border-radius: $radius;
+}
+
+@mixin breakpoint($size) {
+    @media (min-width: map-get(b.$brakepoints-up, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-scale($breakpoint-value, $scale) {
+    $divider: map-get($map: b.$brakepoint-up-scale, $key: $scale);
+    $px: "px";
+    $effective-width: calc($breakpoint-value / $divider) + $px;
+
+    @media (orientation: landscape) and (max-width: $effective-width) {
+        @content;
+    }
+}

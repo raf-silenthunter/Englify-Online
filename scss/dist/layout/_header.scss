@@ -1,1 +1,129 @@
+@use "../utils/breakpoints" as b;
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+        @keyframes header-background {
+            0% {
+                transform: scale(1);
+            }
+    
+            25% {
+                transform: scale(1.02);
+            }
+    
+            50% {
+                transform: scale(1);
+            }
+    
+            75% {
+                transform: scale(1.02);
+            }
+    
+            100% {
+                transform: scale(1);
+            }
+        }
+
+.header{
+    height: 100dvh;
+    width: 100%;
+
+    &__background{
+        @include m.position(absolute, 0, 0);
+        height: 100%;
+        width: 100%;
+        background-image: url("../../../images/big-ben-2393098_1920_blur.jpg");
+        background-repeat: no-repeat;
+        background-position: top;
+        z-index: 0;
+        @media screen and (min-width: 1200px) {
+            background-size: cover;
+            animation-name: header-background;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.527);
+            z-index: 1;
+        }
+    }
+
+    &__nav{
+        @include m.position(fixed, 0, 0);
+    }
+
+    &__content{
+        @include m.position(absolute, calc(0px + 100px), 0);
+        @include m.flex(flex, column);
+        justify-content: space-between;
+        height: calc(100dvh - 100px);
+        padding: 40px 20px 20px 20px;
+        width: 100%;
+        align-items: center;
+    }
+
+    &__title{
+        font-size: clamp(22px, 1.8vw, 4rem);
+        letter-spacing: 2px;
+        font-weight: 700;
+        max-width: 1000px;
+    }
+
+    &__txt{
+        font-size: 1.8rem;
+        font-size: clamp(18px, 3rem, 1.4vw);
+        &--small{
+            font-size: 1.6rem;
+            text-align: center;
+        }
+    }
+
+    &__intro-block, &__more-block{
+        @include m.flex(flex, column);  
+    }
+
+    &__intro-block{
+        margin-top: clamp(20px, 6rem, 1.8vw);
+        height: 400px;
+        justify-content: space-between;
+    }
+
+    &__more-block{
+        justify-content: end;
+        height: 200px;
+        margin-top: auto;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__more-btn{
+        display: flex;
+        @include m.flex-center(center, center);
+        width: 60px;
+        height: 60px;
+        border: 3px solid v.$color-secondary;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+.contact-btn{
+    width: 280px;
+    color: v.$color-complementary;
+    border-radius: 5px;
+    background-color: #B2C5CD;
+    padding: 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    transition: all .3s;
+    &:hover{
+        background-color: #F9F9F9;
+    }
+}
 

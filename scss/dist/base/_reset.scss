@@ -1,1 +1,49 @@
+@use "../utils/variables" as v;
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: v.$font-size;
+}
+
+body {
+    overflow: hidden;
+    background-color: v.$color-primary;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input,
+textarea,
+select {
+    all: revert;
+}
+
+a{
+    display: block;
+    text-decoration: none;
+    color: unset;
+}
+
+button, a, input, select {
+    border: none;
+    cursor: pointer;
+    background: none;
+}

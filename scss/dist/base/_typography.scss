@@ -1,3 +1,29 @@
-h1{
-    font-size: 20px;
+@use "../utils/variables" as v;
+
+p, li, ol, ul {
+    overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button, span, a,
+figcaption,
+blockquote{
+    font-size: v.$font-size-base;
+    font-family: v.$font-family;
+    font-weight: v.$font-weight-base;
+    font-style: normal;
+    line-height: v.$line-height;
+}
+
+a,
+a:visited,
+a:active,
+a:focus {
+    text-decoration: none;
 }
