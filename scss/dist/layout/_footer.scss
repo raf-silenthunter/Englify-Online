@@ -1,1 +1,39 @@
+@use "../utils/breakpoints" as b;
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
 
+.footer {
+    padding: 20px;
+    @include m.flex(flex, column);
+    gap: 2rem;
+
+    &__sitemap,
+    &__legals {
+        @include m.breakpoint("lg") {
+            width: 1300px;
+            margin: 0 auto;
+        }
+    }
+    &__logo {
+        height: 50px;
+    }
+    &__item {
+        margin-block: 1rem;
+    }
+    &__legals {
+        border-top: 2px solid v.$color-complementary;
+        padding-top: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    &__column {
+        @include m.breakpoint("lg") {
+            display: flex;
+            gap: 2rem;
+        }
+    }
+    &__link {
+        text-transform: uppercase;
+    }
+}

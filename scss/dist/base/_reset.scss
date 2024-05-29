@@ -1,6 +1,7 @@
 @use "../utils/variables" as v;
 
-* {
+*,*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -11,7 +12,7 @@ html{
 }
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: v.$color-primary;
 }
 
@@ -33,7 +34,14 @@ input[type="radio"],
 input,
 textarea,
 select {
-    all: revert;
+    outline: none;
+    border: none;
+}
+
+input::placeholder,
+select::placeholder, textarea::placeholder {
+    color: #999999;
+    opacity: 1;
 }
 
 a{
@@ -46,4 +54,8 @@ button, a, input, select {
     border: none;
     cursor: pointer;
     background: none;
+}
+
+textarea {
+    resize: vertical;
 }

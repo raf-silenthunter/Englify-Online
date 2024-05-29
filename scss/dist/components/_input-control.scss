@@ -1,0 +1,44 @@
+@use "../utils/breakpoints" as b;
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+.input-control {
+    width: 100%;
+
+    &__input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+        height: 50px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
+
+        &--textarea {
+            height: 100px;
+        }
+
+        &:active,
+        &:focus {
+            border: 2px solid #6d3527;
+            box-shadow: 0 4px 15px #6d3527;
+        }
+    }
+
+    &__label {
+        font-weight: bold;
+        color: v.$color-complementary;
+    }
+
+    &:last-of-type {
+        @include m.breakpoint("lg") {
+            grid-column: 1/-1;
+        }
+    }
+
+    &__error-info {
+        display: none;
+        height: 20px;
+        margin-top: 5px;
+        color: red;
+    }
+}

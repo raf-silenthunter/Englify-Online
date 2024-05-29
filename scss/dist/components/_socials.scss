@@ -1,0 +1,34 @@
+@use "../utils/breakpoints" as b;
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+.socials {
+    max-width: 530px;
+    padding: 40px 20px;
+    border-radius: 10px;
+    background: v.$color-primary;
+    @include m.flex(flex, column);
+    justify-content: space-between;
+    text-align: left;
+    gap: 1.5rem;
+
+    &__item {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
+        border-radius: 50px;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__icon {
+        height: 50px;
+    }
+
+    &__text {
+        color: v.$color-complementary;
+        font-weight: bold;
+    }
+}

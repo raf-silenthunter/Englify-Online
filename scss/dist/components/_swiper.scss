@@ -1,0 +1,10 @@
+@use "../utils/breakpoints" as b;
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+.swiper {
+    &__card {
+        max-width: 400px;
+        text-align: left;
+    }
+}

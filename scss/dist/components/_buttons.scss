@@ -1,1 +1,88 @@
+@use "../utils/breakpoints" as b;
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+.hamburger-btn {
+    @include m.flex(flex, column);
+    @include m.flex-center(space-around, end);
+
+    @media screen and (min-width: 1200px) {
+        display: none;
+    }
+
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+
+    &__item {
+        height: 3px;
+        width: 100%;
+        background-color: v.$color-primary;
+        border-radius: 10px;
+
+        &:nth-child(2n) {
+            width: 80%;
+        }
+
+        &:nth-child(3n) {
+            width: 60%;
+        }
+    }
+}
+
+.button-cta {
+    width: 280px;
+    padding: 15px 10px;
+    border-radius: 5px;
+    background-color: #B2C5CD;
+    color: v.$color-complementary;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: all .3s;
+    text-align: center;
+
+    &:hover {
+        background-color: #d8e1e6;
+    }
+}
+
+.button-action {
+    display: flex;
+    @include m.flex-center(center, center);
+}
+
+.button-action--border{
+    @include m.border-prop(3px, solid, v.$color-secondary, 50%);
+}
+
+.buttons-wrap{
+    position: relative;
+    width: 100%;
+    max-height: 48px;
+    display: flex;
+    justify-content: space-between;
+
+    &--only-mobile{
+        @include m.breakpoint("lg"){
+            display: none;
+        }
+    }
+
+    ::after{
+        content: "";
+        width: calc(100% - 56px);
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 28px;
+        z-index: -10;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.325);
+    }
+
+    &__icon{
+        height: 100%;
+        background-color: v.$color-secondary;
+        border-radius: 50%;
+    }
+}
 

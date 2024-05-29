@@ -1,0 +1,12 @@
+@use "../utils/breakpoints" as b;
+@use "../utils/variables" as v;
+
+.price {
+    padding-block: 5px;
+    border: 2px solid v.$color-complementary;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    color: v.$color-complementary;
+}

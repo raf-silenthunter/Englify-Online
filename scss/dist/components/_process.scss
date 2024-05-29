@@ -1,0 +1,79 @@
+@use "../utils/breakpoints" as b;
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+.process {
+    @include m.flex(flex, column);
+    gap: 3rem;
+
+    &__step {
+        @include m.flex(flex, column);
+        gap: 1.5rem;
+        align-items: center;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.325);
+        background: v.$color-primary;
+        padding: 15px;
+        border-radius: 10px;
+
+        @include m.breakpoint("lg") {
+            flex-direction: row;
+            text-align: left;
+            transition: all .4s linear;
+            &:hover {
+                box-shadow: 0 4px 30px #6d3527;
+            }
+        }
+
+        &:nth-of-type(2n) {
+            @include m.breakpoint("lg") {
+                flex-direction: row-reverse;
+            }
+        }
+    }
+
+    &__number-wrap,
+    &__info-wrap {
+        order: 1;
+    }
+
+    &__number-wrap {
+        display: flex;
+        @include m.flex-center(center, center);
+        @include m.breakpoint("lg") {
+            width: 20%;
+            order: 2;
+        }
+    }
+
+    &__number {
+        font-size: 35px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        text-align: center;
+        background-color: v.$color-complementary;
+        color: v.$color-primary;
+        line-height: 85px;
+    }
+
+    &__img-wrap {
+        order: 3;
+        height: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+    &__info-wrap,
+    &__img-wrap {
+        @include m.breakpoint("lg") {
+            width: 40%;
+        }
+    }
+}
