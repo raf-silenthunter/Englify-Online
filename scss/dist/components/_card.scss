@@ -13,8 +13,15 @@
     &__img-wrap {
         position: relative;
         width: 100%;
-        height: 200px;
+        height: 150px;
         z-index: 0;
+        @media screen and (orientation: portrait) and (min-width: 600px){
+            height: 300px;
+        }
+
+        @include m.breakpoint("lg"){
+            height: 200px;
+        }
     }
 
     &__img {

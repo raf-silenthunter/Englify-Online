@@ -25,10 +25,13 @@
     }
     
 .header{
-    height: 100dvh;
+    min-height: 100dvh;
     width: 100%;
     position: relative;
     overflow: hidden;
+    @media (orientation: landscape) and (max-width: 992px) {
+        min-height: 120dvh;
+    }    
     
     &::after{
         content: "";
@@ -38,7 +41,6 @@
         background-image: url("../../../images/big-ben-2393098_1920_blur.jpg");
         background-repeat: no-repeat;
         background-position: top;
-        //skonsultować z klientem pozycję obrazu na mobile
         @media screen and (min-width: 1200px) {
             background-size: cover;
             animation-name: header-background;
@@ -68,6 +70,9 @@
         width: 100%;
         padding: 40px 20px 20px 20px;
         z-index: 10;
+        @media (orientation: landscape) and (max-width: 992px) {
+            height: calc(120dvh - 100px);
+        }
     }
 
     &__title{
@@ -90,6 +95,7 @@
         height: 400px;
         margin-top: clamp(20px, 6rem, 1.8vw);
         justify-content: space-between;
+        // gap: 2rem;
     }
 
     &__more-block{
@@ -98,6 +104,9 @@
         gap: 2rem;
         height: 200px;
         margin-top: auto;
+        @media screen and (orientation: landscape) and (max-width: 992px) {
+                display: none;
+            }
     }
 
     &__button-action{

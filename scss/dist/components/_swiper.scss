@@ -3,8 +3,22 @@
 @use "../utils/mixins" as m;
 
 .swiper {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    @include m.breakpoint("lg") {
+        justify-content: space-between;
+    }
+
     &__card {
-        max-width: 400px;
         text-align: left;
+        width: 100%;
+        flex-shrink: 0;       
+        @media screen and (orientation: landscape) and (max-width: 1200px){
+            width: 32%;
+        }
+        @include m.breakpoint("lg"){
+            max-width: 400px;
+        }
     }
 }

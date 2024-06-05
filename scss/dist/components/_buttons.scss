@@ -62,7 +62,7 @@
     display: flex;
     justify-content: space-between;
 
-    &--only-mobile{
+    &--not-desktop{
         @include m.breakpoint("lg"){
             display: none;
         }

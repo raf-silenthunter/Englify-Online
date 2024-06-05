@@ -74,6 +74,10 @@ body {
   background-color: #F9F9F9;
 }
 
+main {
+  overflow: hidden;
+}
+
 img,
 picture,
 video,
@@ -229,7 +233,7 @@ a:focus {
   justify-content: space-between;
 }
 @media (min-width: 992px) {
-  .buttons-wrap--only-mobile {
+  .buttons-wrap--not-desktop {
     display: none;
   }
 }
@@ -286,8 +290,18 @@ a:focus {
 .card__img-wrap {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 150px;
   z-index: 0;
+}
+@media screen and (orientation: portrait) and (min-width: 600px) {
+  .card__img-wrap {
+    height: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .card__img-wrap {
+    height: 200px;
+  }
 }
 .card__img {
   width: 100%;
@@ -336,9 +350,30 @@ a:focus {
   margin-bottom: 15px;
 }
 
+.swiper {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .swiper {
+    justify-content: space-between;
+  }
+}
 .swiper__card {
-  max-width: 400px;
   text-align: left;
+  width: 100%;
+  flex-shrink: 0;
+}
+@media screen and (orientation: landscape) and (max-width: 1200px) {
+  .swiper__card {
+    width: 32%;
+  }
+}
+@media (min-width: 992px) {
+  .swiper__card {
+    max-width: 400px;
+  }
 }
 
 .process {
@@ -356,7 +391,7 @@ a:focus {
   padding: 15px;
   border-radius: 10px;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .process__step {
     flex-direction: row;
     text-align: left;
@@ -366,7 +401,7 @@ a:focus {
     box-shadow: 0 4px 30px #6d3527;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .process__step:nth-of-type(2n) {
     flex-direction: row-reverse;
   }
@@ -379,7 +414,7 @@ a:focus {
   justify-content: center;
   align-items: center;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .process__number-wrap {
     width: 20%;
     order: 2;
@@ -409,10 +444,13 @@ a:focus {
   -o-object-position: bottom;
      object-position: bottom;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .process__info-wrap, .process__img-wrap {
     width: 40%;
   }
+}
+.process__info-wrap {
+  padding-inline: 20px;
 }
 
 .input-control {
@@ -450,7 +488,6 @@ a:focus {
 }
 
 .form {
-  max-width: 800px;
   padding: 40px 20px;
   border-radius: 10px;
   display: grid;
@@ -463,6 +500,7 @@ a:focus {
 }
 @media (min-width: 992px) {
   .form {
+    max-width: 800px;
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -472,7 +510,6 @@ a:focus {
 }
 
 .socials {
-  max-width: 530px;
   padding: 40px 20px;
   border-radius: 10px;
   background: #F9F9F9;
@@ -481,6 +518,11 @@ a:focus {
   justify-content: space-between;
   text-align: left;
   gap: 1.5rem;
+}
+@media screen and (orientation: landscape) and (min-width: 992px) {
+  .socials {
+    max-width: 530px;
+  }
 }
 .socials__item {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
@@ -517,10 +559,15 @@ a:focus {
   }
 }
 .header {
-  height: 100dvh;
+  min-height: 100dvh;
   width: 100%;
   position: relative;
   overflow: hidden;
+}
+@media (orientation: landscape) and (max-width: 992px) {
+  .header {
+    min-height: 120dvh;
+  }
 }
 .header::after {
   content: "";
@@ -568,6 +615,11 @@ a:focus {
   padding: 40px 20px 20px 20px;
   z-index: 10;
 }
+@media (orientation: landscape) and (max-width: 992px) {
+  .header__content {
+    height: calc(120dvh - 100px);
+  }
+}
 .header__title {
   max-width: 1000px;
   font-size: clamp(22px, 1.8vw, 4rem);
@@ -593,6 +645,11 @@ a:focus {
   gap: 2rem;
   height: 200px;
   margin-top: auto;
+}
+@media screen and (orientation: landscape) and (max-width: 992px) {
+  .header__more-block {
+    display: none;
+  }
 }
 .header__button-action {
   width: 60px;
@@ -656,6 +713,7 @@ a:focus {
   align-items: center;
   padding: 40px 20px 40px 20px;
   text-align: center;
+  flex-wrap: wrap;
 }
 .section__intro-wrap {
   max-width: 1000px;
@@ -665,10 +723,11 @@ a:focus {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  width: 100%;
 }
-@media (min-width: 992px) {
+@media (orientation: landscape) and (min-width: 992px) {
   .section__content {
-    width: 1300px;
+    max-width: 1300px;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -679,7 +738,7 @@ a:focus {
 .section__buttons-wrap {
   margin-block: 40px;
 }
-@media (min-width: 992px) {
+@media (orientation: landscape) {
   .section__buttons-wrap {
     max-width: 350px;
   }
@@ -698,6 +757,7 @@ a:focus {
 @media (min-width: 992px) {
   .footer__sitemap, .footer__legals {
     width: 1300px;
+    max-width: 100%;
     margin: 0 auto;
   }
 }

@@ -39,13 +39,13 @@
             </div>
             <nav class="header__nav nav">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#offert" class="nav__link">Oferta</a></li>
-                    <li class="nav__item"><a href="#contract" class="nav__link">Umowa</a></li>
+                    <li class="nav__item"><a href="#oferta" class="nav__link">Oferta</a></li>
+                    <li class="nav__item"><a href="#umowa" class="nav__link">Umowa</a></li>
                     <li class="nav__item nav__item--logo"><a href="#header" class="nav__link">
                         <img src="../images/logos/Englify-logo-browm.png"
                                 alt="logo firmy Englify Online" class="nav__logo"></a></li>
-                    <li class="nav__item"><a href="#testimonials" class="nav__link">Opinie</a></li>
-                    <li class="nav__item"><a href="#contact-me" class="nav__link">Kontakt</a></li>
+                    <li class="nav__item"><a href="#opinie" class="nav__link">Opinie</a></li>
+                    <li class="nav__item"><a href="#kontakt" class="nav__link">Kontakt</a></li>
                 </ul>
                 <button class="nav__hamburger-btn hamburger-btn">
                     <span class="hamburger-btn__item"></span>
@@ -59,25 +59,26 @@
                     <h1 class="header__title">Zajęcia z języka angielskiego szyte na miarę! Angielski dla dzieci i dorosłych.
                     </h1>
                     <p class="header__txt txt-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, ipsa?</p>
-                    <a class="header__button button-cta">Umów się na rozmowę</a>
+                    <a href="#kontakt" class="header__button button-cta">Umów się na rozmowę</a>
                 </div>
                 <div class="header__more-block">
                     <p class="header__more txt-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Eum, vel?</p>
-                    <a href="#offert" class="header__button-action button-action button-action--border">
+                    <a href="#oferta" class="header__button-action button-action button-action--border">
                         <img src="../icons/arrow-down-32-blue.png" alt="ikona strzałka w dół">
                     </a>
                 </div>
                 
             </div>
         </header>
-        <section class="section" id="offert">
+        <section class="section" id="oferta">
             <div class="section__intro-wrap">
                 <h2 class="h2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
                 <p class="section__intro-txt intro-txt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero necessitatibus iusto inventore dignissimos blanditiis! Animi atque consequatur adipisci impedit fuga!</p>
             </div>
-            <div class="section__content swiper">
-                <div class="swiper__card card card--offert">
+            <div class="section__content">
+                <div class="swiper swiper--offert">
+                <div class="swiper__card card">
                     <div class="card__img-wrap">
                         <img src="../images/zajecia-indywidualne.jpg" alt="" class="card__img">
                         <p class="intro-txt intro-txt--small card__price price">100 zł / 50 min.</p>
@@ -102,10 +103,10 @@
                         </ul>
                     </div>
                     <div class="card__button-wrap">
-                        <a href="#" class="card__button button-cta">Umów się na zajęcia próbne</a>
+                        <a href="#kontakt" class="card__button button-cta">Umów się na zajęcia próbne</a>
                     </div>
                 </div>
-                <div class="swiper__card card card--offert">
+                <div class="swiper__card card">
                     <div class="card__img-wrap">
                         <img src="../images/zajecia-w-parach.jpg" alt="" class="card__img">
                         <p class="intro-txt intro-txt--small card__price price">100 zł / 50 min.</p>
@@ -134,10 +135,10 @@
                         </ul>
                     </div>
                     <div class="card__button-wrap">
-                        <a href="#" class="card__button button-cta">Umów się na zajęcia próbne</a>
+                        <a href="#kontakt" class="card__button button-cta">Umów się na zajęcia próbne</a>
                     </div>
                 </div>
-                <div class="swiper__card card card--offert">
+                <div class="swiper__card card">
                     <div class="card__img-wrap">
                         <img src="../images/zajecia-grupowe.png" alt="" class="card__img">
                         <p class="intro-txt intro-txt--small card__price price">100 zł / 50 min.</p>
@@ -166,10 +167,11 @@
                         </ul>
                     </div>
                     <div class="card__button-wrap">
-                        <a href="#" class="card__button button-cta">Umów się na zajęcia próbne</a>
+                        <a href="#kontakt" class="card__button button-cta">Umów się na zajęcia próbne</a>
                     </div>
                 </div>
-                <div class="buttons-wrap buttons-wrap--only-mobile">
+                </div>
+                <div class="buttons-wrap buttons-wrap--not-desktop">
                     <button class="buttons-wrap__button-action button-action">
                         <img class="buttons-wrap__icon" src="../icons/prev-full-64.png" alt="strzałka w lewo, do poprzedniej opcji">
                     </button>
@@ -179,7 +181,7 @@
                 </div>
             </div>
         </section>
-        <section class="section section--light-blue" id="contract">
+        <section class="section section--light-blue" id="umowa">
             <div class="section__intro-wrap">
                 <h2 class="h2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
                 <p class="section__intro-txt intro-txt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero necessitatibus iusto inventore dignissimos blanditiis! Animi atque consequatur adipisci impedit fuga!</p>
@@ -237,60 +239,64 @@
                 </div>
             </div>
         </section>
-        <section class="section " id="testimonials">
+        <section class="section " id="opinie">
             <div class="section__intro-wrap">
                 <h2 class="h2">Opinie naszych kursantów</h2>
                 <p class="section__intro-txt intro-txt">Wciąż masz wątpliwości? Sprawdź, co o naszych zajęciach mówią kursanci.</p>
             </div>
-            <div class="section__content swiper section__content--testimonial">
-                <div class="swiper__card card card--testimonial">
-                    <div class="card__info-wrap">
-                        <div class="card__header">
-                            <div class="card__header-icon">
-                                <img src="../icons/student-boy-64.png" alt="">
+            <div class="section__content">
+                <div class="swiper swiper--testimonial">
+                    <div class="swiper__card card card--testimonial">
+                        <div class="card__info-wrap">
+                            <div class="card__header">
+                                <div class="card__header-icon">
+                                    <img src="../icons/student-boy-64.png" alt="">
+                                </div>
+                                <div class="card__header-info">
+                                    <h3 class="h3">Bartek</h3>
+                                    <p class="card__caption intro-txt">Zajęcia grupowe</p>
+                                </div>
                             </div>
-                            <div class="card__header-info">
-                                <h3 class="h3">Bartek</h3>
-                                <p class="card__caption intro-txt">Zajęcia grupowe</p>
-                            </div>
+                            <p class="intro-txt card__quote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde illo est, culpa
+                                mollitia officia incidunt quam, ipsum iure accusamus vel laboriosam eum exercitationem saepe autem,
+                                perferendis et error eveniet quod.</p>
                         </div>
-                        <p class="intro-txt card__quote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde illo est, culpa mollitia officia incidunt quam, ipsum iure accusamus vel laboriosam eum exercitationem saepe autem, perferendis et error eveniet quod.</p>
                     </div>
-                </div>
-                <div class="swiper__card card card--testimonial">
-                    <div class="card__info-wrap">
-                        <div class="card__header">
-                            <div class="card__header-icon">
-                                <img src="../icons/student-girl-64.png" alt="">
+                    <div class="swiper__card card card--testimonial">
+                        <div class="card__info-wrap">
+                            <div class="card__header">
+                                <div class="card__header-icon">
+                                    <img src="../icons/student-girl-64.png" alt="">
+                                </div>
+                                <div class="card__header-info">
+                                    <h3 class="h3">Marysia</h3>
+                                    <p class="card__caption intro-txt">Zajęcia grupowe</p>
+                                </div>
                             </div>
-                            <div class="card__header-info">
-                                <h3 class="h3">Marysia</h3>
-                                <p class="card__caption intro-txt">Zajęcia grupowe</p>
-                            </div>                            
+                            <p class="intro-txt card__quote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde illo est, culpa
+                                mollitia officia incidunt quam, ipsum iure accusamus vel laboriosam eum exercitationem saepe autem,
+                                perferendis et error eveniet quod.</p>
                         </div>
-                        <p class="intro-txt card__quote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde illo est, culpa
-                            mollitia officia incidunt quam, ipsum iure accusamus vel laboriosam eum exercitationem saepe autem,
-                            perferendis et error eveniet quod.</p>
                     </div>
-                </div>
-                <div class="swiper__card card card--testimonial">
-                    <div class="card__info-wrap">
-                        <div class="card__header">
-                            <div class="card__header-icon">
-                                <img src="../icons/student-girl-64.png" alt="">
+                    <div class="swiper__card card card--testimonial">
+                        <div class="card__info-wrap">
+                            <div class="card__header">
+                                <div class="card__header-icon">
+                                    <img src="../icons/student-girl-64.png" alt="">
+                                </div>
+                                <div class="card__header-info">
+                                    <h3 class="h3">Alicja</h3>
+                                    <p class="card__caption intro-txt">Zajęcia grupowe</p>
+                                </div>
                             </div>
-                            <div class="card__header-info">
-                                <h3 class="h3">Alicja</h3>
-                                <p class="card__caption intro-txt">Zajęcia grupowe</p>
-                            </div>
+                            <p class="intro-txt card__quote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde illo est, culpa
+                                mollitia officia incidunt quam, ipsum iure accusamus vel laboriosam eum exercitationem saepe autem,
+                                perferendis et error eveniet quod.</p>
                         </div>
-                        <p class="intro-txt card__quote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde illo est, culpa
-                            mollitia officia incidunt quam, ipsum iure accusamus vel laboriosam eum exercitationem saepe autem,
-                            perferendis et error eveniet quod.</p>
                     </div>
                 </div>
             </div>
-            <div class="section__buttons-wrap buttons-wrap">
+            <div class="section__buttons-wrap buttons-wrap buttons-wrap--not-desktop">
                 <button class="buttons-wrap__button-action button-action">
                     <img class="buttons-wrap__icon" src="../icons/prev-full-64.png" alt="strzałka w lewo, do poprzedniej opcji">
                 </button>
@@ -299,7 +305,7 @@
                 </button>
             </div>
         </section>
-        <section class="section section--light-blue" id="contact-me">
+        <section class="section section--light-blue" id="kontakt">
             <div class="section__intro-wrap">
                 <h2 class="h2">Lorem ipsum dolor sit amet consectetur.</h2>
                 <p class="section__intro-txt intro-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur obcaecati provident quas minima at nemo! Eveniet iste dignissimos quos ratione.</p>
@@ -366,25 +372,25 @@
                     <p class="intro-txt intro-txt--small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, quidem. Totam
                         asperiores modi nisi impedit.</p>
                     <div class="socials__item">
-                        <a href="" class="socials__link">
+                        <a href="mailto:englify.online@gmail.com" class="socials__link">
                             <img src="../icons/email-64.png" alt="ikona" class="socials__icon">
                             <p class="socials__text intro-txt">weronika@weronika.pl</p>
                         </a>
                     </div>
                     <div class="socials__item">
-                        <a href="" class="socials__link">
+                        <a href="tel:+48777-777-777" class="socials__link">
                             <img src="../icons/phone-64.png" alt="ikona" class="socials__icon">
                             <p class="socials__text intro-txt">+48 777-777-777</p>
                         </a>
                     </div>
                     <div class="socials__item">
-                        <a href="" class="socials__link">
+                        <a href="https://www.facebook.com/englifyangielskidladoroslych" target="_blank" class="socials__link">
                             <img src="../icons/facebook-64.png" alt="ikona" class="socials__icon">
                             <p class="socials__text intro-txt">Facebook</p>
                         </a>
                     </div>
                     <div class="socials__item">
-                        <a href="" class="socials__link">
+                        <a href="https://www.instagram.com/englify_online/" target="_blank" class="socials__link">
                             <img src="../icons/instagram-64.png" alt="ikona" class="socials__icon">
                             <p class="socials__text intro-txt">Instagram</p>
                         </a>

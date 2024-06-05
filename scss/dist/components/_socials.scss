@@ -3,7 +3,6 @@
 @use "../utils/mixins" as m;
 
 .socials {
-    max-width: 530px;
     padding: 40px 20px;
     border-radius: 10px;
     background: v.$color-primary;
@@ -11,7 +10,9 @@
     justify-content: space-between;
     text-align: left;
     gap: 1.5rem;
-
+    @media screen and (orientation: landscape) and (min-width: 992px){
+        max-width: 530px;
+    }
     &__item {
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
         border-radius: 50px;
