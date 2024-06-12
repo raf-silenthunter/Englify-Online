@@ -7,7 +7,7 @@ class handleMainNavigation{
             navLogo: document.querySelector(".nav__item--logo"),
             navLinks: document.querySelectorAll(".nav__link"),
         }
-
+        this.mainNavHamburgerBtn = root.querySelector(".nav__hamburger-btn");
         this.mainNavHamburgerBtn.addEventListener("click", () => this.toggleNav())
     }
     toggleNav(){
@@ -17,6 +17,7 @@ class handleMainNavigation{
         this.mainNavElements.navLinks.forEach((item) => item.classList.toggle("nav__link--nav-expanded"));
     }
 }
+
 
 const nav = document.querySelector(".nav")
 const mainnav = new handleMainNavigation(nav);
