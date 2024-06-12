@@ -173,6 +173,9 @@ a:focus {
 }
 
 .hamburger-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -661,6 +664,7 @@ a:focus {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 90px;
   padding: 10px;
   border: 1px solid rgba(178, 197, 205, 0.3);
   z-index: 100;
@@ -670,6 +674,14 @@ a:focus {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.325);
+  background: rgba(178, 197, 205, 0.6901960784);
+  transition: all 0.3s linear;
+}
+.nav--nav-expanded {
+  height: 100%;
+  padding-top: 30px;
+  gap: 3rem;
+  align-items: space-around;
 }
 @media screen and (min-width: 1200px) {
   .nav__list {
@@ -681,6 +693,14 @@ a:focus {
     gap: 1rem;
   }
 }
+.nav__list--nav-expanded {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .nav__item:not(.nav__item--logo) {
   display: none;
 }
@@ -689,11 +709,15 @@ a:focus {
     display: block;
   }
 }
+.nav__item.nav__item--nav-expanded {
+  display: block;
+}
 .nav__logo {
   height: 70px;
 }
 .nav__link {
   color: #B2C5CD;
+  color: #6D3527;
   text-transform: uppercase;
 }
 @media screen and (min-width: 1200px) {
@@ -701,9 +725,12 @@ a:focus {
     font-size: 2rem;
     transition: all 0.3s;
   }
-  .nav__link:hover {
-    color: #F9F9F9;
-  }
+}
+.nav__link--nav-expanded {
+  display: block;
+  color: #6D3527;
+  font-size: 2rem;
+  margin: 20px 10px;
 }
 
 .section {
