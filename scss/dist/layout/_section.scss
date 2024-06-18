@@ -30,8 +30,8 @@
     }
 
     &__buttons-wrap{
-        margin-block: 40px;
         @media (orientation: landscape){
+            margin: 0 auto;
             max-width: 350px;
         }
     }

@@ -67,6 +67,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -192,7 +193,7 @@ a:focus {
 .hamburger-btn__item {
   height: 3px;
   width: 100%;
-  background-color: #F9F9F9;
+  background-color: #6D3527;
   border-radius: 10px;
 }
 .hamburger-btn__item:nth-child(2n) {
@@ -200,6 +201,14 @@ a:focus {
 }
 .hamburger-btn__item:nth-child(3n) {
   width: 60%;
+}
+.hamburger-btn__item--nav-expanded {
+  position: absolute;
+  width: 60% !important;
+  transform: rotate(45deg);
+}
+.hamburger-btn__item--nav-expanded:nth-child(3n) {
+  transform: rotate(-45deg);
 }
 
 .button-cta {
@@ -367,11 +376,7 @@ a:focus {
   text-align: left;
   width: 100%;
   flex-shrink: 0;
-}
-@media screen and (orientation: landscape) and (max-width: 1200px) {
-  .swiper__card {
-    width: 32%;
-  }
+  transition: all 0.3s ease-in;
 }
 @media (min-width: 992px) {
   .swiper__card {
@@ -729,7 +734,7 @@ a:focus {
 .nav__link--nav-expanded {
   display: block;
   color: #6D3527;
-  font-size: 2rem;
+  font-size: clamp(2rem, 3vh, 2.75rem);
   margin: 20px 10px;
 }
 
@@ -762,11 +767,9 @@ a:focus {
 .section__intro-txt {
   padding-block: 20px;
 }
-.section__buttons-wrap {
-  margin-block: 40px;
-}
 @media (orientation: landscape) {
   .section__buttons-wrap {
+    margin: 0 auto;
     max-width: 350px;
   }
 }

@@ -20,7 +20,7 @@
     &__item {
         height: 3px;
         width: 100%;
-        background-color: v.$color-primary;
+        background-color: v.$color-complementary;
         border-radius: 10px;
 
         &:nth-child(2n) {
@@ -29,6 +29,15 @@
 
         &:nth-child(3n) {
             width: 60%;
+        }
+
+        &--nav-expanded {
+            position: absolute;
+            width: 60% !important;
+            transform: rotate(45deg);
+            &:nth-child(3n) {
+                    transform: rotate(-45deg);
+                }
         }
     }
 }

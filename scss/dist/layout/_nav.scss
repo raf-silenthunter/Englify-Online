@@ -72,7 +72,7 @@
         &--nav-expanded {
             display: block;
             color: v.$color-complementary;
-            font-size: 2rem;
+            font-size: clamp(2rem, 3vh, 2.75rem);
             margin: 20px 10px;
         }
     }
