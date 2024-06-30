@@ -1,21 +1,23 @@
 export class FormValidation{
-    constructor(form, optionalInputs, successElement){
+    constructor(form, inputsToDelete, successElement){
         //in second parameter put in Array inputName that is not used in form instance
         //important! check inputs for data-info in HTML, and delete them if not needed
+        //successElement must be also implemented in HTML!!! and add class into it
         this.form = form;
-        this.allInputs = Array.from(form.elements).filter((el) => el.tagName === "INPUT");
+        this.allInputs = Array.from(form.elements).filter((el) => el.tagName !== "BUTTON");
         this.successInfoPlaceholder = successElement;
         this.validationData = {
             inputName: null,
             inputSurname: null,
             inputPhone: null,
+            inputClasses: null,
             inputMessage: null,
             inputEmail: null,
             inputLogin: null,
             inputPassword: null,
         }
 
-        this.setOptionalInputs(optionalInputs);
+        this.deleteNotUsedInputs(inputsToDelete);
         this.form.reset();
     }
 
@@ -32,30 +34,29 @@ export class FormValidation{
     this.form.addEventListener("focusin", (e) => {
         if (e.target.tagName === "INPUT") {
             this.input = e.target;
-            this.placeholder = this.input.getAttribute("placeholder"); // Przechowuj placeholder aktualnego inputa
+            this.placeholder = this.input.getAttribute("placeholder"); // Store placeholder of an input
             this.input.placeholder = "";
         }
     }, true);
-// do tego wrócić i do rozmowy z chatem i spisać do nauki!!!
     this.form.addEventListener("blur", (e) => {
         if (e.target.tagName === "INPUT") {
-            e.target.placeholder = this.placeholder; // Przywróć placeholder dla tego konkretnego inputa
+            e.target.placeholder = this.placeholder; // Restore placeholder when user exit input
         }
     }, true);
 }
 
-    setOptionalInputs(inputs){
+    deleteNotUsedInputs(inputs){
         if(inputs.length === 0) console.log("no optional inputs");
         else if(!Array.isArray(inputs)) console.log('wrong type of inputs provided. It is not an Array!');
-        else inputs.map((input) => delete this.validationData[input]);
+        else inputs.forEach((input) => delete this.validationData[input]);
     }
 
     baseValidation(value, message, placement, data){
         //value = value inserted in input; message = error message to display; 
-        //placement = location where to set error-info class
-        //data = indicate which data part should update for validation process
-
-        if(value === ""){
+        //placement = location where to set error-info class.
+        //To to so you need correct input structure
+        //data = indicate which data object in constructor part should update for validation process
+        if(value === "" || value === "default"){
             const errorMessage = message;
             this.setError(placement, errorMessage, true, data);
         } else {
@@ -83,24 +84,24 @@ export class FormValidation{
     if(e.target.getAttribute("data-info") === "required") {
         switch(inputId){
                 case "name": 
-                    this.baseValidation(inputValue, "Provide your name", this.form.name, "inputName");
+                    this.baseValidation(inputValue, "Wpisz imię", this.form.name, "inputName");
                     break;
                 case "surname":
-                    this.baseValidation(inputValue, "Provide your surname", this.form.surname, "inputSurname");
+                    this.baseValidation(inputValue, "Wpisz nazwisko", this.form.surname, "inputSurname");
                     break;
                 case "phone":
                     if(inputValue){
                         const inputValueReduced = inputValue.split(/[ ;-]/).join("");
                         const phoneno = /^\d{9}$/;
                         if(!inputValueReduced.match(phoneno)) {
-                            const errorMessage = "Provide 9 numbers phone";
+                            const errorMessage = "Podaj właściwy numer telefonu";
                             this.setError(this.form.phone, errorMessage, true, "inputPhone");
                         } else {
                             this.validationData.inputPhone = "true";
                             this.setSuccess(this.form.phone);
                         }
                     } else {
-                        const errorMessage = "Insert phone number";
+                        const errorMessage = "Wpisz numer telefonu";
                         this.setError(this.form.phone, errorMessage, true, "inputPhone");
                     }
                     break;
@@ -109,22 +110,25 @@ export class FormValidation{
                         this.validationData.inputEmail = "true";
                         this.setSuccess(this.form.email);
                     } else {
-                        const errorMessage = "Wrong e-mail adress";                  
+                        const errorMessage = "Nieprawidłowy adres e-mail";                  
                         this.setError(this.form.email, errorMessage, true,"inputEmail");
                     }
                     break;  
                 case "message":
-                    this.baseValidation(inputValue, "Please, tell us what do you need", this.form.message, "inputMessage");
+                    this.baseValidation(inputValue, "Wpisz wiadomość", this.form.message, "inputMessage");
                     break;
+                case "classes":
+                    this.baseValidation(inputValue, "Wybierz rodzaj zajęć!", this.form.classes, "inputClasses");
+                    break;  
                 case "login":
                     this.baseValidation(inputValue,
-                        "Provide login!",
+                        "Niepoprawny login",
                         this.form.login,
                         "inputLogin");
                     break;
                 case "password":
                     this.baseValidation(inputValue,
-                        "Provide correct password!",
+                        "Niepoprawne hasło",
                         this.form.password,
                         "inputPassword");
                     break;
@@ -137,7 +141,7 @@ export class FormValidation{
         let errorDisplay;
         if(element.id === "login" || element.id === "password"){
             input = element.parentElement;
-            errorDisplay = element.parentElement.nextElementSibling
+            errorDisplay = element.parentElement.nextElementSibling;
         } else {
             input = element;
             const inputParent = element.parentElement;
@@ -197,9 +201,9 @@ export class FormValidation{
             this.showSuccessMsg();
             this.cleanValidationData();
         } else {
-            const emptyInputs = this.allInputs.filter((input) => input.value.trim() === "");
+            const emptyInputs = this.allInputs.filter((input) => input.value.trim() === "" || input.value.trim() === "default");
             emptyInputs.forEach((input) => {
-                if(input.getAttribute("data-info") === "required") this.setError(input, "insert value!", false);
+                if(input.getAttribute("data-info") === "required") this.setError(input, "Wpisz dane!", false);
             })
         }
     }

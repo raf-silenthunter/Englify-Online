@@ -64,3 +64,14 @@ button, a, input, select {
 textarea {
     resize: vertical;
 }
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+    color: #999999;
+    padding: 0;
+    margin: 0;
+}

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "npx sass --watch ./scss/dist/main.scss ./css/style.css"
+    "sass": "npx sass --watch ./scss/dist/main.scss ./css/main.css"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "globals": "^15.1.0",
     "node-sass": "^9.0.0",
     "prettier": "^3.2.5",
-    "sass": "^1.77.0"
+    "sass": "^1.77.6"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",

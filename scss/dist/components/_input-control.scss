@@ -4,24 +4,10 @@
 
 .input-control {
     width: 100%;
+    height: 120px;
 
     &__input {
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
         margin-top: 10px;
-        height: 50px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
-
-        &--textarea {
-            height: 100px;
-        }
-
-        &:active,
-        &:focus {
-            border: 2px solid #6d3527;
-            box-shadow: 0 4px 15px #6d3527;
-        }
     }
 
     &__label {
@@ -37,8 +23,52 @@
 
     &__error-info {
         display: none;
-        height: 20px;
+        // height: 20px;
         margin-top: 5px;
-        color: red;
+        color: v.$error;
+    }
+}
+
+.input{
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
+
+    &--textarea {
+        height: 100px;
+    }
+
+    &--success {
+        border: 2px solid v.$success;
+    }
+
+    &--error{
+        border: 2px solid v.$error;
+    }
+
+    &:focus {
+        border: 2px solid #6d3527;
+        box-shadow: 0 4px 15px #6d3527;
+    }
+}
+
+.error-info{
+    display: block;
+    color: v.$error;
+    margin-top: 5px;
+    font-size: clamp(12px, 1rem + .75vh, 1.7rem);
+}
+
+.success-msg {
+    margin: 10px auto;
+    color: #09c372;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .4s linear;
+
+    &--active {
+        opacity: 1;
     }
 }

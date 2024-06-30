@@ -28,11 +28,13 @@ const swiperTestimonialOffert = new HandleSwiper(
     swiperTestimonialRoot, swiperTestimonialCards,
     swiperTestimonialButtonsWrap, 20);
 
+swiperTestimonialOffert.init();
+
 // Import of Swipers JS module
 
 import {FormValidation} from "./partials/forms.js";
-// const form = document.querySelector(".contact__form");
-// const successElement = document.querySelector('[data-info="contact-success"]')
-// const contactForm = new FormValidation(form, ["inputSurname", "inputLogin", "inputPassword"]);
+const form = document.querySelector(".section__form");
+const successElement = document.querySelector('[data-info="contact-success"]')
+const contactForm = new FormValidation(form, ["inputPhone","inputLogin", "inputPassword"] ,successElement);
 
-// contactForm.init();
+contactForm.init();

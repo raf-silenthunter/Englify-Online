@@ -315,40 +315,42 @@
                         <div class="form__input-control input-control">
                             <label for="name" class="input-control__label intro-txt">Wpisz swoje imię:</label>
                             <input
-                            required 
+                            data-info="required"
                             type="text" 
                             id="name" 
-                            class="input-control__input intro-txt"
+                            class="input-control__input input intro-txt"
                             placeholder="Imię...">
-                            <p class="input-control__error-info intro-txt">Niepoprawne dane!</p>
+                            <p class="input-control__error-info intro-txt"></p>
                         </div>
                         <div class="form__input-control input-control">
                             <label for="surname" class="input-control__label intro-txt">Wpisz swoje nazwisko:</label>
                             <input 
+                            data-info="required"
                             type="text" 
                             id="surname" 
-                            class="input-control__input intro-txt"
+                            class="input-control__input input intro-txt"
                             placeholder="Nazwisko...">
-                            <p class="input-control__error-info intro-txt">Niepoprawne dane!</p>
+                            <p class="input-control__error-info intro-txt"></p>
                         </div>
                         <div class="form__input-control input-control">
                             <label for="email" class="input-control__label intro-txt">Wpisz swój adres e-mail:</label>
                             <input 
-                            required
+                            data-info="required"
                             type="email" 
                             id="email" 
-                            class="input-control__input intro-txt"
+                            class="input-control__input input intro-txt"
                             placeholder="E-mail...">
-                            <p class="input-control__error-info intro-txt">Niepoprawne dane!</p>
+                            <p class="input-control__error-info intro-txt"></p>
                         </div>
                         <div class="form__input-control input-control">
-                            <label for="offert" class="input-control__label intro-txt">Wybierz rodzaj zajęć:</label>
+                            <label for="classes" class="input-control__label intro-txt">Wybierz rodzaj zajęć:</label>
                             <select
-                            required 
-                            name="offert" 
-                            id="offert" 
-                            class="input-control__input">
-                                <option value="group" selected>Zajęcia grupowe</option>
+                            data-info="required"
+                            name="classes" 
+                            id="classes" 
+                            class="input-control__input input">
+                                <option value="default" selected>Kliknij, by wybrać zajęcia...</option>
+                                <option value="group">Zajęcia grupowe</option>
                                 <option value="pair">Zajęcia w parach</option>
                                 <option value="individual">Zajęcia indywidualne</option>
                             </select>
@@ -357,15 +359,17 @@
                         <div class="form__input-control input-control">
                             <label for="message" class="input-control__label intro-txt">Wpisz o co chcesz zapytać:</label>
                             <textarea 
-                            class="input-control__input input-control__input--textarea intro-txt"
+                            class="input-control__input input input--textarea intro-txt"
                             placeholder="Wiadomość..."
+                            data-info="required"
                             name="message" 
                             id="message" 
                             maxlength="500"
                             ></textarea>
-                            <p class="input-control__error-info intro-txt">Niepoprawne dane!</p>
+                            <p class="input-control__error-info intro-txt"></p>
                         </div>
                     <button type="submit" class="form__button-cta button-cta intro-txt">Wyślij zapytanie</button>
+                    <p class="success-msg intro-txt" data-info="contact-success">Skontaktujemy się z Tobą wkrótce!</p>
                 </form>
                 <div class="section__socials socials">
                     <h3 class="h3">Lorem ipsum dolor sit amet consectetur?</h3>
