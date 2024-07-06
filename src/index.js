@@ -1,5 +1,40 @@
-/* eslint-disable no-unused-vars */
-// Import of MainNav JS module
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import '../css/main.css';
+
+function importAll(r) {
+    let images = {};
+    r.keys().map((item) => { images[item.replace('./', '')] = r(item); });
+    return images;
+  }
+  
+  const images = importAll(require.context('../images', true, /\.(png|jpe?g|svg)$/));
+  const icons = importAll(require.context('../icons', false, /\.(png|jpe?g|svg)$/));
+  
+  // Łączenie obu obiektów obrazów w jeden
+  const allImages = { ...images, ...icons };
+  
+  // Przypisz obrazy do odpowiednich elementów img
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgElements = document.querySelectorAll('img');
+    imgElements.forEach((img) => {
+      const imgName = img.getAttribute('data-src');
+      if (allImages[imgName]) {
+        img.src = allImages[imgName];
+      }
+    });
+  });
+  
+
+// Clear the existing HTML content
+// document.body.innerHTML = '<div id="app"></div>';
+
+// // Render your React component instead
+// const root = createRoot(document.getElementById('app'));
+// root.render(<h1>Hello, world</h1>);
+
+
+// // Import of MainNav JS module
 import {handleMainNavigation} from "./partials/main-nav.js";
 
 const nav = document.querySelector(".nav")
