@@ -196,17 +196,5 @@ export class FormValidation{
 
     validateInputs(){
         this.checkValidationData();
-        if(this.isDataCorrect) {
-            this.form.reset();
-            this.showSuccessMsg();
-            this.cleanValidationData();
-        } else {
-            const emptyInputs = this.allInputs.filter((input) => input.value.trim() === "" || input.value.trim() === "default");
-            emptyInputs.forEach((input) => {
-                if(input.getAttribute("data-info") === "required") this.setError(input, "Wpisz dane!", false);
-            })
-        }
     }
 }
-
-// https://script.google.com/macros/s/AKfycbxK8FfsZ9qI-YG1csGvFfA_HxZVrwQj2oIz8FZkpuYkEvplntoStyqsFVJivyKunA-F4w/exec

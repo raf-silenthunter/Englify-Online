@@ -1,12 +1,13 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+  mode: 'development',
   entry: './src/index.js',
   resolve: {
     alias: {
       images: path.resolve(__dirname, 'images/')
-    }
+    },
+    extensions: ['.js', '.jsx'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -15,10 +16,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/, 
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
         },
       },
       {
