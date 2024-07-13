@@ -9,25 +9,26 @@ const Form = () => {
   useEffect(() => {
     const form = formRef.current;
     const successElement = successRef.current;
-    const inputsToDelete = ["inputPhone", "inputLogin", "inputPassword"]; // Add a list of inputs that you exclude from validation
+    const inputsToDelete = ["inputPhone", "inputLogin", "inputPassword"];
 
     if (form) {
       const formValidation = new FormValidation(form, inputsToDelete, successElement);
       formValidation.init();
-      form.addEventListener('submit', async (e) => {
+
+      const handleSubmit = async (e) => {
         e.preventDefault();
         formValidation.validateInputs();
         if (formValidation.isDataCorrect) {
+          formValidation.showSuccessMsg();
           const formData = new FormData(form);
           const data = Object.fromEntries(formData.entries());
-          console.log(data);
+          formValidation.form.reset();
           try {
             const response = await axios.post('http://localhost:3000/proxy', data, {
               headers: {
                 'Content-Type': 'application/json',
               },
             });
-            formValidation.showSuccessMsg();
             formValidation.cleanValidationData();
           } catch (error) {
             console.error('There was an error!', error);
@@ -38,8 +39,13 @@ const Form = () => {
             if (input.getAttribute("data-info") === "required") formValidation.setError(input, "Wpisz dane!", false);
           });
         }
-      });
-      
+      };
+
+      form.addEventListener('submit', handleSubmit);
+
+      return () => {
+        form.removeEventListener('submit', handleSubmit);
+      };
     }
   }, []);
 

@@ -18,16 +18,11 @@ export class FormValidation{
         }
 
         this.deleteNotUsedInputs(inputsToDelete);
-        this.form.reset();
     }
 
     init(){
         this.form.addEventListener("change", (e) => this.handleInputChange(e));
         document.addEventListener("DOMContentLoaded", () => this.handlePlaceholderChange())
-        this.form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            this.validateInputs();
-        });
     }
 
     handlePlaceholderChange() {
@@ -182,7 +177,7 @@ export class FormValidation{
     showSuccessMsg(){
         if(!this.successInfoPlaceholder) console.log("error - no input provided");
         this.successInfoPlaceholder.classList.add("success-msg--active");
-        
+        // this.form.reset()
         setTimeout(()=> {
             this.successInfoPlaceholder.classList.remove("success-msg--active");
             this.allInputs.forEach((input)=> {
