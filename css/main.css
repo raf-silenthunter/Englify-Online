@@ -429,6 +429,7 @@ a:focus {
 }
 .card__list {
   margin-bottom: 15px;
+  min-height: 370px;
 }
 
 .swiper {
@@ -668,11 +669,8 @@ a:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   text-align: left;
-  gap: 1.5rem;
+  gap: 2.5rem;
 }
 @media screen and (orientation: landscape) and (min-width: 992px) {
   .socials {

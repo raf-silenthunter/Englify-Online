@@ -7,9 +7,8 @@
     border-radius: 10px;
     background: v.$color-primary;
     @include m.flex(flex, column);
-    justify-content: space-between;
     text-align: left;
-    gap: 1.5rem;
+    gap: 2.5rem;
     @media screen and (orientation: landscape) and (min-width: 992px){
         max-width: 530px;
     }

@@ -23,15 +23,33 @@ const Form = () => {
           const formData = new FormData(form);
           const data = Object.fromEntries(formData.entries());
           formValidation.form.reset();
+          
+          // Logowanie danych wysyłanych do serwera
+          console.log('Sending data to server:', data);
+
           try {
             const response = await axios.post('http://localhost:3000/proxy', data, {
               headers: {
                 'Content-Type': 'application/json',
               },
             });
+            
+            // Logowanie odpowiedzi z serwera
+            console.log('Server response:', response.data);
+            
             formValidation.cleanValidationData();
           } catch (error) {
+            // Logowanie błędów z serwera
             console.error('There was an error!', error);
+            if (error.response && error.response.data && error.response.data.errors) {
+              // Jeśli serwer zwróci błędy walidacji
+              error.response.data.errors.forEach(err => {
+                const field = form.querySelector(`[name="${err.param}"]`);
+                if (field) {
+                  formValidation.setError(field, err.msg, true, `input${err.param.charAt(0).toUpperCase() + err.param.slice(1)}`);
+                }
+              });
+            }
           }
         } else {
           const emptyInputs = formValidation.allInputs.filter((input) => input.value.trim() === "" || input.value.trim() === "default");

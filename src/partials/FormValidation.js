@@ -177,7 +177,6 @@ export class FormValidation{
     showSuccessMsg(){
         if(!this.successInfoPlaceholder) console.log("error - no input provided");
         this.successInfoPlaceholder.classList.add("success-msg--active");
-        // this.form.reset()
         setTimeout(()=> {
             this.successInfoPlaceholder.classList.remove("success-msg--active");
             this.allInputs.forEach((input)=> {
