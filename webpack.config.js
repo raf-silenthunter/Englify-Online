@@ -1,7 +1,10 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.js',
   resolve: {
     alias: {
@@ -12,6 +15,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    clean: true, // Usunięcie starych plików w katalogu dist przed nowym buildem
   },
   module: {
     rules: [
@@ -35,6 +39,25 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: true,
+          mangle: true,
+        },
+      }),
+      new CssMinimizerPlugin(),
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html', // Szablon HTML w katalogu public
+      filename: 'index.html',
+      inject: 'body',
+    })
+  ],
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'dist'),
