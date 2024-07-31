@@ -745,14 +745,19 @@ a:focus {
   }
 }
 .header {
-  min-height: 100dvh;
+  min-height: 100vh;
   width: 100%;
   position: relative;
   overflow: hidden;
 }
+@media (orientation: portrait) {
+  .header {
+    min-height: 110vh;
+  }
+}
 @media (orientation: landscape) and (max-width: 992px) {
   .header {
-    min-height: 120dvh;
+    min-height: 120vh;
   }
 }
 .header::after {
@@ -765,10 +770,10 @@ a:focus {
   background-image: url("~images/big-ben-2393098_1920_blur.jpg");
   background-repeat: no-repeat;
   background-position: top;
+  background-size: cover;
 }
 @media screen and (min-width: 1200px) {
   .header::after {
-    background-size: cover;
     -webkit-animation-name: header-background;
             animation-name: header-background;
     -webkit-animation-duration: 10s;
@@ -793,7 +798,7 @@ a:focus {
 }
 .header__content {
   position: absolute;
-  top: 100px;
+  top: 0;
   left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -808,14 +813,20 @@ a:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: calc(100dvh - 100px);
+  height: 100vh;
   width: 100%;
-  padding: 40px 20px 20px 20px;
+  padding: 150px 20px 20px 20px;
   z-index: 10;
+}
+@media (orientation: portrait) {
+  .header__content {
+    min-height: 110vh;
+    padding: 100px 20px 20px 20px;
+  }
 }
 @media (orientation: landscape) and (max-width: 992px) {
   .header__content {
-    height: calc(120dvh - 100px);
+    height: 120vh;
   }
 }
 .header__title {
@@ -828,6 +839,11 @@ a:focus {
 .header__txt {
   font-size: clamp(18px, 3rem, 1.4vw);
 }
+@media (orientation: portrait) {
+  .header__txt {
+    margin-block: 20px;
+  }
+}
 .header__intro-block, .header__more-block {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -839,21 +855,15 @@ a:focus {
 }
 .header__intro-block {
   height: 400px;
-  margin-top: clamp(20px, 6rem, 1.8vw);
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 .header__more-block {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 2rem;
-  height: 200px;
-  margin-top: auto;
 }
 @media screen and (orientation: landscape) and (max-width: 992px) {
   .header__more-block {

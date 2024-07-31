@@ -29,7 +29,7 @@ app.post('/proxy', [
   try {
     console.log('Sanitized request body:', req.body);
 
-    const response = await axios.post(`${GoogleSheetsApiUrl}`, req.body, {
+    const response = await axios.post(GoogleSheetsApiUrl, req.body, {
       headers: {
         'Content-Type': 'application/json',
       },
