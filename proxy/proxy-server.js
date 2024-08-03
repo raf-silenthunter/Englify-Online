@@ -28,10 +28,13 @@ app.post('/proxy', [
 
   try {
     console.log('Sanitized request body:', req.body);
+    console.log('Google Sheets API URL:', GoogleSheetsApiUrl);
 
     const response = await axios.post(GoogleSheetsApiUrl, req.body, {
       headers: {
         'Content-Type': 'application/json',
+        // Dodaj nagłówki autoryzacji, jeśli są wymagane
+        // 'Authorization': `Bearer ${your_access_token}`
       },
     });
 
@@ -39,6 +42,13 @@ app.post('/proxy', [
     res.json(response.data);
   } catch (error) {
     console.error('Error:', error.message);
+
+    if (error.response) {
+      console.error('Error response data:', error.response.data);
+      console.error('Error response status:', error.response.status);
+      console.error('Error response headers:', error.response.headers);
+    }
+
     res.status(500).json({ error: 'There was an error!', details: error.message });
   }
 });
