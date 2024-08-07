@@ -28,7 +28,7 @@ const Form = () => {
           console.log('Sending data to server:', data);
 
           try {
-            const response = await axios.post('http://localhost:3000/proxy', data, {
+            const response = await axios.post('https://proxy-englify.vercel.app/api/proxy', data, {
               headers: {
                 'Content-Type': 'application/json',
               },

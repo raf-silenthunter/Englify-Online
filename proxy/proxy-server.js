@@ -6,14 +6,16 @@ const cors = require('cors');
 const { body, validationResult } = require('express-validator');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const GoogleSheetsApiUrl = process.env.GOOGLE_SHEETS_KEY;
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://englify-online.pl' // Możesz dodać specyficzne domeny, np. 'https://your-frontend-domain.com'
+}));
 
-app.post('/proxy', [
+app.post('/api/proxy', [
   body('Name').trim().isLength({ min: 1 }).withMessage('Imię jest wymagane'),
   body('Surname').trim().isLength({ min: 1 }).withMessage('Nazwisko jest wymagane'),
   body('Email').isEmail().withMessage('Nieprawidłowy adres email').normalizeEmail(),
@@ -33,8 +35,6 @@ app.post('/proxy', [
     const response = await axios.post(GoogleSheetsApiUrl, req.body, {
       headers: {
         'Content-Type': 'application/json',
-        // Dodaj nagłówki autoryzacji, jeśli są wymagane
-        // 'Authorization': `Bearer ${your_access_token}`
       },
     });
 
@@ -54,5 +54,5 @@ app.post('/proxy', [
 });
 
 app.listen(PORT, () => {
-  console.log(`Proxy server is running on http://localhost:${PORT}`);
+  console.log(`Proxy server is running on port ${PORT}`);
 });

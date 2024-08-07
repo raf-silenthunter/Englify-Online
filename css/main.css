@@ -335,6 +335,11 @@ a:focus {
   gap: 15px;
   padding-left: 10px;
 }
+.list--txt {
+  list-style-type: disc;
+  padding-left: 40px;
+  margin-block: 15px;
+}
 .list__item-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -799,7 +804,9 @@ a:focus {
 .header__content {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -815,6 +822,7 @@ a:focus {
           align-items: center;
   height: 100vh;
   width: 100%;
+  max-width: 1300px;
   padding: 150px 20px 20px 20px;
   z-index: 10;
 }
@@ -873,6 +881,13 @@ a:focus {
 .header__button-action {
   width: 60px;
   height: 60px;
+}
+
+.txt-wrap {
+  text-align: left;
+}
+.txt-wrap__block {
+  margin-block: 2rem;
 }
 
 .nav {

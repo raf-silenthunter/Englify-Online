@@ -65,12 +65,14 @@
     }
 
     &__content{
-        @include m.position(absolute, 0, 0);
+        @include m.position(absolute, 0, 50%);
+        transform: translateX(-50%);
         @include m.flex(flex, column);
         justify-content: space-between;
         align-items: center;
         height: 100vh;
         width: 100%;
+        max-width: 1300px;
         padding: 150px 20px 20px 20px;
         z-index: 10;
         @media (orientation: portrait){
@@ -120,4 +122,9 @@
     }
 }
 
-
+.txt-wrap{
+    text-align: left;
+    &__block{
+        margin-block: 2rem;   
+    }
+}

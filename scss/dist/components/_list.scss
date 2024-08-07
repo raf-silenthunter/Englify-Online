@@ -6,6 +6,11 @@
     @include m.flex(flex, column);
     gap: 15px;
     padding-left: 10px;
+    &--txt{
+        list-style-type: disc;
+        padding-left: 40px;
+        margin-block: 15px;
+    }
     &__item-wrap {
         display: flex;
         align-items: center;
