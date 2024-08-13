@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
     mode: isProduction ? 'production' : 'development',
     entry: {
       main: './src/index.js',
-      rodo: './src/rodo.js' // Punkt wejściowy dla strony RODO
+      rodo: './src/rodo.js' 
     },
     resolve: {
       alias: {
@@ -20,8 +20,8 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: '[name].bundle.js', // Użycie [name] dla różnych punktów wejściowych
-      publicPath: '/', // Ustawienie publicPath
+      filename: '[name].bundle.js',
+      publicPath: '/', 
       clean: true,
     },
     module: {
@@ -62,12 +62,12 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './public/index.html',
         filename: 'index.html',
-        chunks: ['main'], // Włączenie tylko main.bundle.js
+        chunks: ['main'], 
       }),
       new HtmlWebpackPlugin({
-        template: './public/rodo.html', // Szablon HTML dla strony RODO
+        template: './public/rodo.html', 
         filename: 'rodo.html',
-        chunks: ['rodo'], // Włączenie tylko rodo.bundle.js
+        chunks: ['rodo'], 
       })
     ],
     devServer: {
@@ -81,6 +81,7 @@ module.exports = (env, argv) => {
       },
       compress: true,
       port: 9000,
+      hot: true,
     },
   };
 };

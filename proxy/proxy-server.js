@@ -12,7 +12,7 @@ const GoogleSheetsApiUrl = process.env.GOOGLE_SHEETS_KEY;
 
 app.use(bodyParser.json());
 app.use(cors({
-  origin: 'https://englify-online.pl' // Możesz dodać specyficzne domeny, np. 'https://your-frontend-domain.com'
+  origin: 'https://englify-online.pl',
 }));
 
 app.post('/api/proxy', [
@@ -20,7 +20,8 @@ app.post('/api/proxy', [
   body('Surname').trim().isLength({ min: 1 }).withMessage('Nazwisko jest wymagane'),
   body('Email').isEmail().withMessage('Nieprawidłowy adres email').normalizeEmail(),
   body('Classes').isIn(['group', 'pair', 'individual']).withMessage('Nieprawidłowy rodzaj zajęć'),
-  body('Message').trim().isLength({ min: 1 }).withMessage('Wiadomość jest wymagana')
+  body('Message').trim().isLength({ min: 1 }).withMessage('Wiadomość jest wymagana'),
+  body('Rodo').isIn(['on']).withMessage('Zaznacz zgodę na przetwarzanie danych osobowych'),
 ], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

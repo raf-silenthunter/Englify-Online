@@ -15,6 +15,7 @@ export class FormValidation{
             inputEmail: null,
             inputLogin: null,
             inputPassword: null,
+            inputRodo: null,
         }
 
         this.deleteNotUsedInputs(inputsToDelete);
@@ -52,6 +53,16 @@ export class FormValidation{
         //To to so you need correct input structure
         //data = indicate which data object in constructor part should update for validation process
         if(value === "" || value === "default"){
+            const errorMessage = message;
+            this.setError(placement, errorMessage, true, data);
+        } else {
+            this.validationData[data] = "true";
+            this.setSuccess(placement);   
+        }
+    }
+
+    checkboxValidation(target, message, placement, data){
+        if(!target.checked){
             const errorMessage = message;
             this.setError(placement, errorMessage, true, data);
         } else {
@@ -127,6 +138,12 @@ export class FormValidation{
                         this.form.password,
                         "inputPassword");
                     break;
+                case "rodo":
+                    this.checkboxValidation(e.target,
+                        "Nie wyraziłeś zgody na przetwarzanie danych!",
+                        this.form.rodo,
+                        "inputRodo");
+                    break;
             }
         }
     }
@@ -137,6 +154,10 @@ export class FormValidation{
         if(element.id === "login" || element.id === "password"){
             input = element.parentElement;
             errorDisplay = element.parentElement.nextElementSibling;
+        } else if(element.id === "rodo"){
+            input = element.nextElementSibling;
+            errorDisplay = element.parentElement.nextElementSibling;
+            msg = "Nie wyraziłeś zgody na przetwarzanie danych!";
         } else {
             input = element;
             const inputParent = element.parentElement;
@@ -156,7 +177,10 @@ export class FormValidation{
         let errorDisplay;
         if(element.id === "login" || element.id === "password"){
             input = element.parentElement;
-            errorDisplay = element.parentElement.nextElementSibling
+            errorDisplay = element.parentElement.nextElementSibling;
+        } else if(element.id === "rodo"){
+            input = element.nextElementSibling;
+            errorDisplay = element.parentElement.nextElementSibling;
         } else {
             input = element;
             const inputParent = element.parentElement;
@@ -182,6 +206,8 @@ export class FormValidation{
             this.allInputs.forEach((input)=> {
                 if(input.id === "login" || input.id === "password"){
                     input.parentElement.classList.remove("input--success");
+                } else if(input.id === "rodo"){
+                    input.nextElementSibling.classList.remove("input--success");
                 }
                 input.classList.remove("input--success");
             })

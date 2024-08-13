@@ -23,8 +23,7 @@ const Form = () => {
           const formData = new FormData(form);
           const data = Object.fromEntries(formData.entries());
           formValidation.form.reset();
-          
-          // Logowanie danych wysyłanych do serwera
+
           console.log('Sending data to server:', data);
 
           try {
@@ -33,10 +32,12 @@ const Form = () => {
                 'Content-Type': 'application/json',
               },
             });
-            
-            // Logowanie odpowiedzi z serwera
-            console.log('Server response:', response.data);
-            
+            console.log('Server response:', response.data);   
+            // if(response.status === 200){
+              // formValidation.showSuccessMsg();
+              // formValidation.form.reset();
+              // formValidation.cleanValidationData();
+            // }         
             formValidation.cleanValidationData();
           } catch (error) {
             // Logowanie błędów z serwera
@@ -52,7 +53,7 @@ const Form = () => {
             }
           }
         } else {
-          const emptyInputs = formValidation.allInputs.filter((input) => input.value.trim() === "" || input.value.trim() === "default");
+          const emptyInputs = formValidation.allInputs.filter((input) => input.value.trim() === "" || input.value.trim() === "default" || (input.value === "on" && !input.checked));
           emptyInputs.forEach((input) => {
             if (input.getAttribute("data-info") === "required") formValidation.setError(input, "Wpisz dane!", false);
           });
@@ -121,20 +122,34 @@ const Form = () => {
         </select>
         <p className="input-control__error-info intro-txt"></p>
       </div>
-      <div className="form__input-control input-control">
+      <div className="form__input-control input-control input-control--full-width input-control--message">
         <label htmlFor="message" className="input-control__label intro-txt">Wpisz o co chcesz zapytać:</label>
-        <textarea
-          className="input-control__input input input--textarea intro-txt"
-          placeholder="Wiadomość..."
-          data-info="required"
-          id="message"
-          name="Message"
-          maxLength="500"
-        ></textarea>
+          <textarea
+            className="input-control__input input input--textarea intro-txt"
+            placeholder="Wiadomość..."
+            data-info="required"
+            id="message"
+            name="Message"
+            maxLength="500"
+          ></textarea>
+          <p className="input-control__error-info intro-txt"></p>
+      </div>
+      <div className="form__input-control input-control input-control--full-width input-control--rodo">
+        <label htmlFor="rodo" className="input-control__label input-control__label--rodo">
+            <p className='input-control__rodo-txt'>Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z <a href='/rodo.html' className='input__link'>polityką prywatności</a>.</p>
+            <input
+              data-info="required"
+              type="checkbox"
+              id="rodo"
+              name="Rodo"
+              className="input input--checkbox"
+            />
+            <span className='input-control__checkmark'></span>
+          </label>
         <p className="input-control__error-info intro-txt"></p>
       </div>
-      <button type="submit" className="form__button-cta button-cta intro-txt">Wyślij zapytanie</button>
       <p ref={successRef} className="success-msg intro-txt" data-info="contact-success">Skontaktujemy się z Tobą wkrótce!</p>
+      <button type="submit" className="form__button-cta button-cta intro-txt">Wyślij zapytanie</button>
     </form>
   );
 };

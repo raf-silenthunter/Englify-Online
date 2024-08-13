@@ -10,22 +10,58 @@
         margin-top: 10px;
     }
 
+    &--rodo{
+        height: 120px;
+        @media (orientation: landscape) {
+            height: 80px;
+        }
+    }
+
     &__label {
         font-weight: bold;
         color: v.$color-complementary;
+        &--rodo{
+            font-weight: normal;
+            position: relative;
+            display: inline-block;
+            height: auto;
+        }
     }
 
-    &:last-of-type {
+    &--full-width {
         @include m.breakpoint("lg") {
             grid-column: 1/-1;
         }
     }
 
+    &--message{
+            height: 170px;
+    }
+
     &__error-info {
         display: none;
-        // height: 20px;
         margin-top: 5px;
         color: v.$error;
+    }
+
+    &__rodo-txt{
+        font-size: 1.6rem;
+        line-height: 20px;
+        text-align: left;
+        padding-left: 40px;
+    }
+
+    &__checkmark{
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        height: 20px;
+        width: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
+        border-radius: 5px;
+        background-color: #fff;
+        cursor: pointer;
     }
 }
 
@@ -36,8 +72,22 @@
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
 
+    &--checkbox{
+        cursor: default;
+        position: absolute;
+        height: 0;
+        width: 0;
+        opacity: 0;
+    }
+
     &--textarea {
         height: 100px;
+    }
+
+    &__link{
+        text-decoration: underline;
+        display: inline-block;
+        font-size: 1.6rem;
     }
 
     &--success {
@@ -62,13 +112,27 @@
 }
 
 .success-msg {
+    display: none;
     margin: 10px auto;
     color: #09c372;
     text-align: center;
-    opacity: 0;
     transition: opacity .4s linear;
 
     &--active {
-        opacity: 1;
+        display: block;
     }
+}
+
+.input--checkbox:checked + .input-control__checkmark::after {
+    background-image: url("/icons/check-rodo-24.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    height: 18px;
+    position: absolute;
+    width: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

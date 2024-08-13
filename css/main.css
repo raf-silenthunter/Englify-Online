@@ -582,19 +582,57 @@ a:focus {
 .input-control__input {
   margin-top: 10px;
 }
+.input-control--rodo {
+  height: 120px;
+}
+@media (orientation: landscape) {
+  .input-control--rodo {
+    height: 80px;
+  }
+}
 .input-control__label {
   font-weight: bold;
   color: #6D3527;
 }
+.input-control__label--rodo {
+  font-weight: normal;
+  position: relative;
+  display: inline-block;
+  height: auto;
+}
 @media (min-width: 992px) {
-  .input-control:last-of-type {
+  .input-control--full-width {
     grid-column: 1/-1;
   }
+}
+.input-control--message {
+  height: 170px;
 }
 .input-control__error-info {
   display: none;
   margin-top: 5px;
   color: rgb(228, 50, 50);
+}
+.input-control__rodo-txt {
+  font-size: 1.6rem;
+  line-height: 20px;
+  text-align: left;
+  padding-left: 40px;
+}
+.input-control__checkmark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .input {
@@ -605,8 +643,20 @@ a:focus {
   -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.551);
 }
+.input--checkbox {
+  cursor: default;
+  position: absolute;
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
 .input--textarea {
   height: 100px;
+}
+.input__link {
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 1.6rem;
 }
 .input--success {
   border: 2px solid #09c372;
@@ -628,15 +678,30 @@ a:focus {
 }
 
 .success-msg {
+  display: none;
   margin: 10px auto;
   color: #09c372;
   text-align: center;
-  opacity: 0;
   -webkit-transition: opacity 0.4s linear;
   transition: opacity 0.4s linear;
 }
 .success-msg--active {
-  opacity: 1;
+  display: block;
+}
+
+.input--checkbox:checked + .input-control__checkmark::after {
+  background-image: url("/icons/check-rodo-24.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  height: 18px;
+  position: absolute;
+  width: 18px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .form {
@@ -659,7 +724,6 @@ a:focus {
   }
 }
 .form__button-cta {
-  margin-top: 50px;
   grid-column: 1/-1;
 }
 
