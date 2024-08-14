@@ -19,11 +19,9 @@ const Form = () => {
         e.preventDefault();
         formValidation.validateInputs();
         if (formValidation.isDataCorrect) {
-          formValidation.showSuccessMsg();
           const formData = new FormData(form);
           const data = Object.fromEntries(formData.entries());
-          formValidation.form.reset();
-
+          let status;
           console.log('Sending data to server:', data);
 
           try {
@@ -32,24 +30,28 @@ const Form = () => {
                 'Content-Type': 'application/json',
               },
             });
-            console.log('Server response:', response.data);   
-            // if(response.status === 200){
-              // formValidation.showSuccessMsg();
-              // formValidation.form.reset();
-              // formValidation.cleanValidationData();
-            // }         
-            formValidation.cleanValidationData();
+            console.log('Server response:', response.data); 
+
+            status = "success";
+            formValidation.showMsg(status, "Skontaktujemy się z Tobą wkrótce!");
+            formValidation.form.reset();
+            formValidation.cleanValidationData();    
           } catch (error) {
-            // Logowanie błędów z serwera
+            // Logs of server errors
             console.error('There was an error!', error);
             if (error.response && error.response.data && error.response.data.errors) {
-              // Jeśli serwer zwróci błędy walidacji
+              // If server returns validation error
               error.response.data.errors.forEach(err => {
                 const field = form.querySelector(`[name="${err.param}"]`);
                 if (field) {
                   formValidation.setError(field, err.msg, true, `input${err.param.charAt(0).toUpperCase() + err.param.slice(1)}`);
                 }
               });
+            } else {
+              //If server will not detect validation error but will not be able to send data
+              console.log(status);
+              status = "error";
+              formValidation.showMsg(status, "Wystąpił problem, przepraszamy. Spróbuj ponownie później.");
             }
           }
         } else {
@@ -148,7 +150,7 @@ const Form = () => {
           </label>
         <p className="input-control__error-info intro-txt"></p>
       </div>
-      <p ref={successRef} className="success-msg intro-txt" data-info="contact-success">Skontaktujemy się z Tobą wkrótce!</p>
+      <p ref={successRef} className="msg intro-txt" data-info="msg contact-success"></p>
       <button type="submit" className="form__button-cta button-cta intro-txt">Wyślij zapytanie</button>
     </form>
   );

@@ -8,14 +8,13 @@
     right: 10px;
     @include m.flex(flex, column);
     @include m.flex-center(space-around, end);
-
-    @media screen and (min-width: 1200px) {
-        display: none;
-    }
-
     width: 70px;
     height: 70px;
     padding: 10px;
+    
+    @media screen and (min-width: 1200px) {
+        display: none;
+    }
 
     &__item {
         height: 3px;

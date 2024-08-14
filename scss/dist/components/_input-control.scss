@@ -111,15 +111,24 @@
     font-size: clamp(12px, 1rem + .75vh, 1.7rem);
 }
 
-.success-msg {
+.msg {
     display: none;
     margin: 10px auto;
-    color: #09c372;
     text-align: center;
-    transition: opacity .4s linear;
+    transition: display .4s linear;
+    color: #6d3527;
+    grid-column: 1/-1;
 
     &--active {
         display: block;
+    }
+
+    &--success{
+        color: #09c372;
+    }
+
+    &--error{
+        color: #e43232;
     }
 }
 

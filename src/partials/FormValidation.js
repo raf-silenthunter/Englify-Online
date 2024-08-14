@@ -198,11 +198,21 @@ export class FormValidation{
         }
     }
 
-    showSuccessMsg(){
+    showMsg(status, message){
         if(!this.successInfoPlaceholder) console.log("error - no input provided");
-        this.successInfoPlaceholder.classList.add("success-msg--active");
+        console.log("probuje pokazac wiadomosc")
+        this.successInfoPlaceholder.classList.add("msg--active")
+        if(status === "success"){
+            this.successInfoPlaceholder.classList.add("msg--success");
+        } else{
+            this.successInfoPlaceholder.classList.add("msg--error");
+        }
+        this.successInfoPlaceholder.textContent = message;
+        
+        
         setTimeout(()=> {
-            this.successInfoPlaceholder.classList.remove("success-msg--active");
+            this.successInfoPlaceholder.classList.remove("msg--active", "msg--error", "msg--success");
+            this.successInfoPlaceholder.textContent = "";
             this.allInputs.forEach((input)=> {
                 if(input.id === "login" || input.id === "password"){
                     input.parentElement.classList.remove("input--success");
@@ -211,7 +221,7 @@ export class FormValidation{
                 }
                 input.classList.remove("input--success");
             })
-        }, 3000)
+        }, 5000)
     }
 
     validateInputs(){
