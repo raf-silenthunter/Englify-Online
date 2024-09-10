@@ -57,11 +57,8 @@
     }
 
     &__price {
-        @include m.position(absolute, 0, 50%);
-        transform: translate(-50%, -65%);
-        background-color: v.$color-primary;
-        z-index: 100;
-        width: 80%;
+        width: 100%;
+        margin: 10px auto;
     }
 
     &--testimonial {
@@ -75,6 +72,6 @@
 
     &__list{
         margin-bottom: 15px;
-        min-height: 370px;
+        min-height: 360px;
     }
 }
