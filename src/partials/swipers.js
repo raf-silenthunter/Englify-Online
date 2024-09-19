@@ -1,10 +1,10 @@
 export class HandleSwiper {
-    constructor(root, cards, buttonsWrap, gap = 0) {
+    constructor(root, cards, buttonsWrap, gap = 0, swiperCrdWdth) {
         this.swiperWrap = root;
         this.swiperCards = [...cards];
         this.swiperButtonsWrap = buttonsWrap;
 
-        const cardWidthNoGap = Math.floor(this.swiperCards[0].offsetWidth);
+        const cardWidthNoGap = Math.floor(swiperCrdWdth);
         this.cardWidth = cardWidthNoGap + gap;
         this.initialCardOffset = 0;
     }
@@ -36,10 +36,8 @@ export class HandleSwiper {
     }
 
     init(){
-        document.addEventListener("DOMContentLoaded", () => {
             if(this.swiperButtonsWrap){
                 this.swiperButtonsWrap.addEventListener("click", (e) => this.detectClickedBtn(e));
             }
-        })
     }
 }

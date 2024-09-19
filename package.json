@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "npx sass --watch ./scss/dist/main.scss ./css/main.css",
-    "start": "webpack serve --open",
-    "build": "webpack --config webpack.config.js",
-    "start:prod": "serve -s dist"
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "start:prod": "webpack serve --mode production --open"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@babel/cli": "^7.24.7",
     "@babel/core": "^7.24.9",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.24.8",
     "@babel/preset-react": "^7.24.7",
     "@eslint/js": "^9.2.0",
@@ -33,16 +34,17 @@
     "file-loader": "^6.2.0",
     "globals": "^15.1.0",
     "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.1",
     "node-sass": "^9.0.0",
     "prettier": "^3.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.77.8",
     "sass-loader": "^14.2.1",
-    "serve": "^14.2.3",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.10",
-    "webpack": "^5.93.0",
+    "webpack": "^5.94.0",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   },

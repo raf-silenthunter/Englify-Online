@@ -16,7 +16,7 @@ export class handleMainNavigation{
             this.mainNavElements.nav.classList.contains("nav--nav-expanded") ? this.closeNav() : this.openNav();
         }
     }
-    //spróbuj przerobić na update nav state
+    
     openNav(){
         requestAnimationFrame(() => {
             this.mainNavElements.nav.classList.add("nav--nav-expanded");

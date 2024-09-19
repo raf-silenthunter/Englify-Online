@@ -2,6 +2,7 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -20,7 +21,7 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: '[name].bundle.js',
+      filename: 'js/[name].bundle.js',
       publicPath: '/', 
       clean: true,
     },
@@ -38,23 +39,29 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader']
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
           test: /\.(scss|sass)$/,
           use: [
-            'style-loader',
+            MiniCssExtractPlugin.loader,
             'css-loader',
-            'sass-loader'
+            'sass-loader',
           ],
         },        
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource',
+          generator: {
+            filename: 'images/[hash][ext][query]',
+          },
         },
       ],
     },
     optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
       minimize: true,
       minimizer: [
         new TerserPlugin({
@@ -67,29 +74,38 @@ module.exports = (env, argv) => {
       ],
     },
     plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].css', 
+      }),
       new HtmlWebpackPlugin({
         template: './public/index.html',
-        filename: 'index.html',
+        filename: 'html/index.html', 
         chunks: ['main'], 
       }),
       new HtmlWebpackPlugin({
         template: './public/rodo.html', 
-        filename: 'rodo.html',
+        filename: 'html/rodo.html',
         chunks: ['rodo'], 
-      })
+      }),
     ],
     devServer: {
       static: {
-        directory: path.resolve(__dirname, 'public'),
+        directory: path.resolve(__dirname, 'dist'),
       },
       historyApiFallback: {
         rewrites: [
-          { from: /^\/rodo$/, to: '/rodo.html' },
+          { from: /^\/$/, to: '/html/index.html' },
+          { from: /^\/rodo$/, to: '/html/rodo.html' },
         ],
       },
       compress: true,
       port: 9000,
       hot: true,
+    },
+    performance: {
+      hints: 'warning',
+      maxEntrypointSize: 350000,
+      maxAssetSize: 350000,
     },
   };
 };

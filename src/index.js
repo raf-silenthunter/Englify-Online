@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import '../css/main.css';
 
@@ -35,42 +35,52 @@ mainnav.init();
 // swiper Offert Class declaration and passing paramethers
 import { HandleSwiper } from "./partials/swipers.js";
 
-const swiperOfferRoot = document.querySelector(".swiper--offert");
-const swiperCards = swiperOfferRoot.querySelectorAll(".swiper__card");
-const swiperButtonsWrap = document.querySelector('[data-info="buttons-offer"]');
-const swiperOffert = new HandleSwiper(
-    swiperOfferRoot,
-    swiperCards,
-    swiperButtonsWrap,
-    20
-);
-swiperOffert.init();
+document.addEventListener('DOMContentLoaded',()=>{
 
-// swiper Testimonial Class declaration and passing paramethers
-const swiperTestimonialRoot = document.querySelector(".swiper--testimonial");
-const swiperTestimonialCards = swiperTestimonialRoot.querySelectorAll(".swiper__card");
-const swiperTestimonialButtonsWrap = document.querySelector('[data-info="buttons-testimonial"]');
-const swiperTestimonialOffert = new HandleSwiper(
-    swiperTestimonialRoot,
-    swiperTestimonialCards,
-    swiperTestimonialButtonsWrap,
-    20
-);
-swiperTestimonialOffert.init();
+    const swiperOfferRoot = document.querySelector(".swiper--offert");
+    const swiperCards = swiperOfferRoot.querySelectorAll(".swiper__card");
+    const swiperButtonsWrap = document.querySelector('[data-info="buttons-offer"]');
+    const swiperCardWidth = document.querySelector(".swiper__card").offsetWidth
+    const swiperOffert = new HandleSwiper(
+        swiperOfferRoot,
+        swiperCards,
+        swiperButtonsWrap,
+        20,
+        swiperCardWidth
+    );
+
+    swiperOffert.init();
+
+    // swiper Testimonial Class declaration and passing paramethers
+    const swiperTestimonialRoot = document.querySelector(".swiper--testimonial");
+    const swiperTestimonialCards = swiperTestimonialRoot.querySelectorAll(".swiper__card");
+    const swiperTestimonialButtonsWrap = document.querySelector('[data-info="buttons-testimonial"]');
+    const swiperTestimonialOffert = new HandleSwiper(
+        swiperTestimonialRoot,
+        swiperTestimonialCards,
+        swiperTestimonialButtonsWrap,
+        20
+    );
+    
+    swiperTestimonialOffert.init();
+})
 
 // Import of Swipers React module
-import Form from './partials/Form'; // Upewnij się, że ścieżka jest poprawna
+const Form = lazy(() => import('./partials/Form'));
 
-const container = document.getElementById('root');
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('root');
 
-if (container) {
-    const root = createRoot(container);
+    if (container) {
+        const root = createRoot(container);
 
-    root.render(
-        <React.StrictMode>
-            <Form />
-        </React.StrictMode>
-    );
-} else {
-    console.error('Root element not found');
-}
+        root.render(
+            <React.StrictMode>
+             <Form />
+            </React.StrictMode>
+        );
+    } else {
+        console.error('Root element not found');
+    }
+});
+
