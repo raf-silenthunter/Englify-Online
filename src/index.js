@@ -40,7 +40,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     const swiperOfferRoot = document.querySelector(".swiper--offert");
     const swiperCards = swiperOfferRoot.querySelectorAll(".swiper__card");
     const swiperButtonsWrap = document.querySelector('[data-info="buttons-offer"]');
+    //universal value
     const swiperCardWidth = document.querySelector(".swiper__card").offsetWidth
+    //universal value
     const swiperOffert = new HandleSwiper(
         swiperOfferRoot,
         swiperCards,
@@ -59,7 +61,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         swiperTestimonialRoot,
         swiperTestimonialCards,
         swiperTestimonialButtonsWrap,
-        20
+        20,
+        swiperCardWidth
     );
     
     swiperTestimonialOffert.init();

@@ -3,6 +3,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // Dodaj ten import
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -11,24 +12,24 @@ module.exports = (env, argv) => {
     mode: isProduction ? 'production' : 'development',
     entry: {
       main: './src/index.js',
-      rodo: './src/rodo.js' 
+      rodo: './src/rodo.js',
     },
     resolve: {
       alias: {
-        images: path.resolve(__dirname, 'images/')
+        images: path.resolve(__dirname, 'images/'),
       },
       extensions: ['.js', '.jsx'],
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'js/[name].bundle.js',
-      publicPath: '/', 
+      publicPath: '/',
       clean: true,
     },
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/, 
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
@@ -48,7 +49,7 @@ module.exports = (env, argv) => {
             'css-loader',
             'sass-loader',
           ],
-        },        
+        },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource',
@@ -75,18 +76,23 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'css/[name].css', 
+        filename: 'css/[name].css',
       }),
       new HtmlWebpackPlugin({
         template: './public/index.html',
-        filename: 'html/index.html', 
-        chunks: ['main'], 
+        filename: 'index.html',
+        chunks: ['main'],
       }),
       new HtmlWebpackPlugin({
-        template: './public/rodo.html', 
-        filename: 'html/rodo.html',
-        chunks: ['rodo'], 
+        template: './public/rodo.html',
+        filename: 'rodo.html',
+        chunks: ['rodo'],
       }),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: '.htaccess', to: '' }, // Kopiuje plik .htaccess do folderu dist
+        ],
+      }), // Dodaj tę wtyczkę
     ],
     devServer: {
       static: {
@@ -94,8 +100,8 @@ module.exports = (env, argv) => {
       },
       historyApiFallback: {
         rewrites: [
-          { from: /^\/$/, to: '/html/index.html' },
-          { from: /^\/rodo$/, to: '/html/rodo.html' },
+          { from: /^\/$/, to: '/index.html' },
+          { from: /^\/rodo$/, to: '/rodo.html' },
         ],
       },
       compress: true,
