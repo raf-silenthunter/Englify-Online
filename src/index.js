@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import '../css/main.css';
 
@@ -31,7 +31,6 @@ const mainnav = new handleMainNavigation(nav);
 mainnav.init();
 
 // Import of Swipers JS module
-
 // swiper Offert Class declaration and passing paramethers
 import { HandleSwiper } from "./partials/swipers.js";
 

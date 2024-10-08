@@ -200,7 +200,6 @@ export class FormValidation{
 
     showMsg(status, message){
         if(!this.successInfoPlaceholder) console.log("error - no input provided");
-        console.log("probuje pokazac wiadomosc")
         this.successInfoPlaceholder.classList.add("msg--active")
         if(status === "success"){
             this.successInfoPlaceholder.classList.add("msg--success");
